@@ -61,9 +61,10 @@ class Bot(Client):
     async def idle(self):
         while True:
             try:
-                await asyncio.sleep(1)
+                while True:
+                    await asyncio.sleep(1)
             except asyncio.CancelledError:
-                break
+                print("Idle task cancelled.")
 
 
 bot = Bot()
@@ -307,13 +308,18 @@ async def main():
 
     try:
         await bot.start()
-        print("Bot is listening...")
+        print("Бот активен...")
         await bot.idle()
     except KeyboardInterrupt:
-        pass
+        print("Завершение работы...")
     finally:
         await bot.stop()
 
 
 if __name__ == "__main__":
-    bot.run(main())
+    try:
+        bot.run(main())
+    except KeyboardInterrupt:
+        print("Завершение работы...")
+    finally:
+        print("Бот остановлен.")
