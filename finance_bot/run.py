@@ -15,12 +15,12 @@ import asyncio
 from fastapi import FastAPI
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton
-from finance_bot.app.config import settings
+from app.config import settings
 import uvicorn
-from finance_bot.app.api.endpoints.transactions import router as transactions_router
+from app.api.endpoints.transactions import router as transactions_router
 import threading
-from finance_bot.app.database import SessionLocal
-from finance_bot.app.models.transaction import Category, Transaction
+from app.database import SessionLocal
+from app.models.transaction import Category, Transaction
 
 app = FastAPI()
 app.include_router(transactions_router, prefix="/api/v1")

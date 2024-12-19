@@ -27,7 +27,7 @@ from pyrogram import Client, types
 from unittest.mock import AsyncMock, MagicMock
 from finance_bot.app.bot.handlers import start_command
 
-from finance_bot.run import Bot, help_command, add_expense_start, get_categories_keyboard
+from run import Bot, help_command, add_expense_start, get_categories_keyboard
 from finance_bot.app.config import settings
 
 from finance_bot.app.database import get_db

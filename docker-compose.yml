@@ -1,0 +1,31 @@
+services:
+  app:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - .env
+    environment:
+      - DATABASE_URL=postgresql://finance_user:finance_password@db/finance_db
+    ports:
+      - "8000:8000"
+
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile.db
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U finance_user -d finance_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    environment:
+      - POSTGRES_DB=finance_db
+      - POSTGRES_USER=finance_user
+      - POSTGRES_PASSWORD=finance_password
+
+volumes:
+  db_data:
