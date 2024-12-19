@@ -19,7 +19,6 @@ Telegram бот для учета личных финансов с FastAPI и Po
 1. Клонируйте репозиторий:
 ```bash
 git clone https://github.com/yourusername/finance-tracker-bot.git
-cd finance-tracker-bot
 ```
 
 2. Создайте виртуальное окружение:
@@ -33,16 +32,13 @@ source .venv/bin/activate  # Linux/Mac
 pip install -r requirements.txt
 ```
 3. Настройте .env файл:
-Скопируйте .env.example в .env
-Заполните необходимые данные
-4. Настройте базу данных:
+спользуйте как пример .env.example. В нем указаны все необходимые параметры для подключения к базе данных и api бота.
+4. Настройте alembic.ini сменив логин, пароль и название базы данных Postgresql.
+5. Запустите докер через команды:
 ```bash
-alembic upgrade head
-python -m app.init_db
-```
-5. Запустите бота:
-```bash
-python run.py
+docker-compose build
+
+docker-compose up
 ```
 ## Использование
 

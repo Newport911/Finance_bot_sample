@@ -1,0 +1,5 @@
+FROM postgres:13
+
+ENV POSTGRES_DB=finance_db
+ENV POSTGRES_USER=finance_user
+ENV POSTGRES_PASSWORD=finance_password
