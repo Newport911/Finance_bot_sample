@@ -18,7 +18,7 @@ Telegram бот для учета личных финансов с FastAPI и Po
 
 1. Клонируйте репозиторий:
 ```bash
-git clone https://github.com/yourusername/finance-tracker-bot.git
+git clone https://github.com/Newport911/Finance_bot_sample.git
 ```
 
 2. Создайте виртуальное окружение:
