@@ -36,6 +36,11 @@ from sqlalchemy.orm import Session
 
 @pytest.mark.asyncio(loop_scope="function")
 async def test_start_command():
+    """
+    Тестирование функции start_command.
+
+    Проверяет, что функция start_command отправляет приветственное сообщение.
+    """
     client = MagicMock(spec=Client)
     message = MagicMock(spec=types.Message)
     message.reply_text = AsyncMock()
@@ -49,6 +54,12 @@ async def test_start_command():
 
 @pytest.mark.asyncio(loop_scope="function")
 async def test_bot_initialization():
+    """
+    Тестирование инициализации бота.
+
+    Проверяет, что при создании экземпляра класса Bot
+    он корректно инициализируется с настройками из settings.
+    """
     bot = Bot()
     assert bot.api_id == settings.API_ID
     assert bot.api_hash == settings.API_HASH
@@ -57,17 +68,32 @@ async def test_bot_initialization():
 
 @pytest.mark.asyncio(loop_scope="function")
 async def test_help_command():
+    """
+    Тестирование функции help_command.
+
+    Проверяет, что функция help_command отправляет сообщение с
+    доступными командами.
+    """
+    # Создаем имитацию клиента и сообщения
     client = MagicMock(spec=Client)
     message = MagicMock(spec=types.Message)
     message.reply_text = AsyncMock()
 
+    # Вызываем тестируемую функцию
     await help_command(client, message)
 
+    # Проверяем, что метод reply_text был вызван ровно один раз
     message.reply_text.assert_called_once()
 
 
 @pytest.mark.asyncio(loop_scope="function")
 async def test_add_expense_start():
+    """
+    Тестирование функции add_expense_start.
+
+    Проверяет, что функция add_expense_start отправляет сообщение с выбором
+    категории расхода.
+    """
     client = MagicMock(spec=Client)
     message = MagicMock(spec=types.Message)
     message.reply_text = AsyncMock()
